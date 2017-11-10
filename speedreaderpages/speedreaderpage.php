@@ -1,4 +1,3 @@
-
 <?php
 /*
 1) retrieve the user record from db
@@ -7,10 +6,7 @@
 4) display speed and each word with an interval(same as speed)
 5) when line is finished, stop interval. Retrieve next line.
 6) etc.
-
-
 2 types of AJAX request : request for a new line + request to save new speed
-
 */
 session_start();
 if(isset($_SESSION['user'])){
@@ -33,10 +29,21 @@ if(isset($_SESSION['user'])){
   <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
   <link href="../styles/mystyles.css" rel="stylesheet">
 </head>
-<body class="masthead" onload="retrieveLineAndSpeedFromDb()">
+<body class="masthead" onload="retrieveInitialLineAndSpeed()">
   <script type="text/javascript">
+  function retrieveInitialLineAndSpeed(){
+    console.log("Initial line and speed set up....");
+    <?php $_SESSION['initialline'] = 'initialline'; ?>
+    retrieveLineAndSpeedFromDb();
+  }
+
+  function retrieveNextLineAndSpeed(){
+    console.log("Retrieving next line....");
+    <?php $_SESSION['nextline'] = 'nextline'; ?>
+    retrieveLineAndSpeedFromDb();
+  }
+
   function retrieveLineAndSpeedFromDb(){
-    <?php $_SESSION['line'] = 'line'; ?>
     console.log("Retrieving line and speed....");
     var req = new XMLHttpRequest();
     req.open("GET", "speedreaderajax.php", true);
@@ -49,12 +56,12 @@ if(isset($_SESSION['user'])){
           console.log("current line: " + line + " speed: " + speed);
           displaySpeed(speed);
           displayLine(line+"", speed);
+
         }
       }
     };
     req.send();
   }
-
   function displaySpeed(speed){
     var wpmSelect = document.getElementById("wpmSelect");
     for (var i = 0; i < wpmSelect.options.length; i++) {
@@ -64,7 +71,6 @@ if(isset($_SESSION['user'])){
       }
     }
   }
-
   function displayLine(line, speed){
     var wordsArr = line.split(' ');
     var counter = 0;
@@ -76,9 +82,9 @@ if(isset($_SESSION['user'])){
       if(counter === wordsArr.length) {
         console.log("Stopping word loop");
         clearInterval(wordLoop);
+        retrieveNextLineAndSpeed();
       }
     }, speed);
-
   }
   </script>
 
