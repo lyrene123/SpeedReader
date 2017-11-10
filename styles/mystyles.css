@@ -1,0 +1,118 @@
+/*https://codepen.io/colorlib/pen/rxddKy
+  https://github.com/BlackrockDigital/startbootstrap-freelancer
+*/
+body {
+  font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+p {
+  font-size: 20px;
+}
+
+hr.star-light, hr.star-primary {
+  max-width: 250px;
+  margin: 25px auto 30px;
+  padding: 0;
+  text-align: center;
+  border: none;
+  border-top: solid 5px;
+}
+
+hr.star-light:after, hr.star-primary:after {
+  font-family: FontAwesome;
+  font-size: 2em;
+  position: relative;
+  top: -.8em;
+  display: inline-block;
+  padding: 0 0.25em;
+  content: '\f005';
+  }
+
+hr.star-light {
+  border-color: white;
+}
+
+hr.star-light:after {
+  color: white;
+  background-color: #AC9BD7;
+}
+
+hr.star-primary {
+  border-color: #AC9BD7;
+}
+
+hr.star-primary:after {
+  color: #AC9BD7;
+  background-color: white;
+}
+
+body.masthead {
+  padding-top: 100px;
+  padding-bottom: 50px;
+  text-align: center;
+  color: white;
+  background: #AC9BD7;
+}
+
+body.masthead img {
+  display: block;
+  margin: 0 auto 20px;
+}
+
+body.masthead .intro-text .name {
+  font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 3em;
+  font-weight: 700;
+  display: block;
+  text-transform: uppercase;
+}
+
+body.masthead .intro-text .login {
+  font-size: 1.50em;
+  font-weight: 300;
+}
+
+.login-page {
+  width: 360px;
+  padding: 1.5% 0 0;
+  margin: auto;
+}
+
+.form {
+  position: relative;
+  z-index: 1;
+  background: #f2f2f2;
+  max-width: 360px;
+  margin: 0 auto 30px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.6), 0 5px 5px 0 rgba(0, 0, 0, 0.4);
+}
+
+.form .loginField {
+  font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  outline: 0;
+  background: #e5e5e5;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+.form .message {
+  margin: 15px 0 0;
+  color: #b3b3b3;
+  font-size: 15px;
+}
+
+.errorMessage {
+  color: #cc0527;
+}
+
+.word {
+  text-align: left;
+  font-style: monospace;
+}
