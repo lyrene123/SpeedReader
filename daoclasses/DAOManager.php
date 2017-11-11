@@ -333,6 +333,22 @@ class DAOManager
     }
   }
 
+  function updateUserSpeed($userid, $speed){
+    try{
+      $pdo=new PDO("pgsql:dbname=$this->dbname;host=$this->serverName",$this->user,$this->password);
+      $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+      $query = $pdo -> prepare("UPDATE user_reader SET speed = ? WHERE userid = ?");
+      $query->bindValue(1, $speed);
+      $query->bindValue(2, $userid);
+      $result = $query->execute();
+      var_dump($result);
+    } catch (PDOException $e){
+      echo $e->getMessage();
+    } finally {
+      unset($pdo);
+    }
+  }
+
   private function getTotalRecordCount(){
     try{
       $pdo=new PDO("pgsql:dbname=$this->dbname;host=$this->serverName",$this->user,$this->password);
@@ -358,7 +374,7 @@ class DAOManager
       $query->bindValue(1, $userid);
       $query->execute();
       $result = $query->fetchAll();
-      
+
       return $result[0][0];
     } catch (PDOException $e){
       echo $e->getMessage();

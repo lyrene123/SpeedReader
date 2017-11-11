@@ -6,8 +6,8 @@
   <title>Speed Reader</title>
   <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Dekko:400,700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Permanent+Marker:400,700,400italic,700italic" rel="stylesheet" type="text/css">
   <link href="../styles/mystyles.css" rel="stylesheet">
 </head>
 <body class="masthead">
@@ -26,7 +26,7 @@
         <input class="loginField" type="password" name="password" placeholder="password" value="<?php if(isset($password)) echo $password; ?>" />
         <input class="loginField" type="submit" name="submit" placeholder="login"/>
         <p class="message">Not registered? Simply enter a username and a
-          password of your choice and you will be registered!</p>
+          password and you will be automatically registered!</p>
         </form>
       </div>
   </div>
