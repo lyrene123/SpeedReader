@@ -23,19 +23,38 @@ if(isset($_SESSION['user'])){
   <script src="./speedreaderscript.js" type="text/javascript"></script>
 </head>
 <body class="masthead">
-  <p>Hello <span id="user"><?php if(isset($user)) echo $user; ?></span></p>
-  <div id="wordField" class="word"></div>
-  <select name=wpmArr[] id="wpmSelect">
-    <?php
-    $counter = 50;
-    $max = 2000;
-    for($i = 50; $i <= 2000; $i = $i + 50){
-      echo "<option value=" . $i . ">" . $i . "</option>";
-    }
-    ?>
-  </select>
-  <footer>
-    Copyright &copy; Lyrene Labor 2017
-  </footer>
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <span class="navbar-brand">Speed Reader</span>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link"><button id="logout">Log Out</button></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="masthead" id="speedReaderBody">
+    <p class="greetings">Hello <span id="user"><?php if(isset($user)) echo $user; ?>,</span>
+        You're currently reading :</p>
+    <p class="story">The Wizard Of Oz by L. Frank Baum</p>
+    <p class="credits">Taken from this
+      <a href="http://www.textfiles.com/etext/FICTION/wizrd_oz">link</a> based on Project Gutenberg</p>
+    <div id="wordField" class="word">loading...</div>
+    <div class="speedSelect">
+      <select name=wpmArr[] id="wpmSelect">
+        <?php
+        $counter = 50;
+        $max = 2000;
+        for($i = 50; $i <= 2000; $i = $i + 50){
+          echo "<option value=" . $i . ">" . $i . "</option>";
+        }
+        ?>
+    </select>
+    </div>
+    <span>speed(wpm)</span>
+  </div>
 </body>
 </html>

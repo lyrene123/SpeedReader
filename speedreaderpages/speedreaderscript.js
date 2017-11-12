@@ -102,13 +102,13 @@ function displayLine(line, speed){
   var wordsArr = line.split(' ');
   var counter = 0;
   var pauseLength = calculatePauseLength(speed);
-  var wordLoop = setInterval(function(){
+  g.wordLoop = setInterval(function(){
     console.log("Displaying word: " + wordsArr[counter]);
     g.wordField.innerHTML = buildWord(wordsArr[counter]);
     counter++;
     if(counter === wordsArr.length) {
       console.log("End of sentence");
-      clearInterval(wordLoop);
+      clearInterval(g.wordLoop);
       retrieveNextLineAndSpeed();
     }
   }, pauseLength);
@@ -125,12 +125,13 @@ function displaySpeed(speed){
 
 function updateSpeed(){
   var selectedSpeed = g.wpmSelect.value;
+  if(selectedSpeed.match(/^\d+$/) && g.speedArr.indexOf(selectedSpeed) !== -1){
     console.log("Updating speed with " + selectedSpeed);
     var req = new XMLHttpRequest();
     req.open("POST", "speedreaderajax.php", true);
     req.setRequestHeader('Content-type','application/x-www-form-urlencoded');
     req.send('selectedSpeed=' + selectedSpeed);
-
+  }
 }
 
 function retrieveInitialLineAndSpeed(){
@@ -172,19 +173,36 @@ function addEvent(obj, type, fn) {
   }
 }
 
+function logoutSession(){
+  console.log("Logging out!");
+  clearInterval(g.wordLoop);
+  var req = new XMLHttpRequest();
+  req.open("POST", "speedreaderajax.php", true);
+  req.onreadystatechange = function() {
+    if (req.readyState == 4 && req.status == 200) {
+      window.location.reload(false);
+    }
+  };
+  req.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+  req.send('request=logout');
+}
+
 function init(){
   g.wpmSelect = document.getElementById("wpmSelect");
   g.wordField = document.getElementById("wordField");
+  g.logout = document.getElementById("logout");
   g.nonLetterIndexFront = 0;
   g.nonLetterIndexBack = 0;
+  g.wordLoop = null;
   var counter = 50;
   var max = 2000;
   g.speedArr = [];
   for(var i = 50; i <= 2000; i = i + 50){
-    g.speedArr.push(i);
+    g.speedArr.push(i+"");
   }
 
   addEvent(g.wpmSelect, "change", updateSpeed);
+  addEvent(g.logout, "click", logoutSession);
   retrieveInitialLineAndSpeed();
 }
 

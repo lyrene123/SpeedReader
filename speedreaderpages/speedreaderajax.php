@@ -25,6 +25,13 @@ if(isset($_SESSION['user']) && $_SERVER['REQUEST_METHOD'] == 'POST'){
     sendJSONResponse();
   }
 
+  if(isset($_POST['request']) && $_POST['request'] == 'logout'){
+    $_SESSION = array();
+    session_destroy();
+    header('Content-Type: application/json');
+    echo json_encode("logout", JSON_NUMERIC_CHECK | JSON_PRETTY_PRINT);
+  }
+
   if(isset($_POST['selectedSpeed'])){
     if(validateSpeedSelection()){
       $daoManager->updateUserSpeed($user, $_POST['selectedSpeed']);

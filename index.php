@@ -30,7 +30,7 @@ function handleUserLoginCreation(){
 
 function handleUserLogin(DAOManager $daoManager){
 	global $user, $password;
-	if($daoManager->getLoginAttempts($user) >= 4){
+	if($daoManager->getLoginAttempts($user) === 3){
 		handleBlockedUser($daoManager);
 	} else {
 		handleUserPasswdVerification($daoManager);
