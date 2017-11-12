@@ -23,9 +23,9 @@ if(isset($_SESSION['user'])){
   <script src="./speedreaderscript.js" type="text/javascript"></script>
 </head>
 <body class="masthead">
-  <p>&nbsp&nbspHello <span id="user"><?php if(isset($user)) echo $user; ?></span></p>
+  <p>Hello <span id="user"><?php if(isset($user)) echo $user; ?></span></p>
   <div id="wordField" class="word"></div>
-  <select name=wpmArr[] id="wpmSelect" onchange="updateSpeed(this.value)">
+  <select name=wpmArr[] id="wpmSelect">
     <?php
     $counter = 50;
     $max = 2000;
@@ -35,7 +35,7 @@ if(isset($_SESSION['user'])){
     ?>
   </select>
   <footer>
-    Copyright &copy Lyrene Labor 2017
+    Copyright &copy; Lyrene Labor 2017
   </footer>
 </body>
 </html>

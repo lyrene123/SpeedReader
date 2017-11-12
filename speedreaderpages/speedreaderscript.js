@@ -36,8 +36,11 @@ function determineFocusLetter(wordLength, frontElementsLength){
 
 function buildWord(word){
   var frontElements = extractNonLettersFront(word);
-  var wordElement = extractWordFromStr(word);
   var backElements = extractNonLettersBack(word);
+  //console.log("back element: " + backElements);
+  //console.log("front elements: " + frontElements);
+  var wordElement = extractWordFromStr(word);
+  //console.log("word element: " + wordElement);
 
   var focusElements = determineFocusLetter(wordElement.length, frontElements.length);
   var formattedWord = focusElements[1] + frontElements;
@@ -53,27 +56,31 @@ function buildWord(word){
 }
 
 function extractWordFromStr(word){
-  return word.match(/\b(\w+)\b/g)[0];
+  return word.substring(g.nonLetterIndexFront, g.nonLetterIndexBack);
 }
 
 function extractNonLettersFront(word){
   var nonLetters = "";
+  g.nonLetterIndexFront = 0;
   for(var i = 0; i < word.length; i++){
     if(word.charAt(i).match(/[a-zA-Z]/)){
       break;
     }
     nonLetters += word.charAt(i);
+    g.nonLetterIndexFront = i + 1;
   }
   return nonLetters;
 }
 
 function extractNonLettersBack(word){
   var nonLetters = "";
+  g.nonLetterIndexBack = word.length;
   for(var i = word.length - 1; i >= 0; i--){
     if(word.charAt(i).match(/[a-zA-Z]/)){
       break;
     }
     nonLetters += word.charAt(i);
+    g.nonLetterIndexBack = i;
   }
   if(nonLetters.length > 0){
     var nonLettersArr = nonLetters.split("");
@@ -116,12 +123,14 @@ function displaySpeed(speed){
   }
 }
 
-function updateSpeed(selectedSpeed){
-  console.log("Updating speed with " + selectedSpeed);
-  var req = new XMLHttpRequest();
-  req.open("POST", "speedreaderajax.php", true);
-  req.setRequestHeader('Content-type','application/x-www-form-urlencoded');
-  req.send('selectedSpeed=' + selectedSpeed);
+function updateSpeed(){
+  var selectedSpeed = g.wpmSelect.value;
+    console.log("Updating speed with " + selectedSpeed);
+    var req = new XMLHttpRequest();
+    req.open("POST", "speedreaderajax.php", true);
+    req.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+    req.send('selectedSpeed=' + selectedSpeed);
+
 }
 
 function retrieveInitialLineAndSpeed(){
@@ -154,9 +163,28 @@ function retrieveLineAndSpeedFromDb(request){
   req.send('request=' + request);
 }
 
+function addEvent(obj, type, fn) {
+  if (obj && obj.addEventListener) {
+    obj.addEventListener(type, fn, false);
+  }
+  else if (obj && obj.attachEvent) {
+    obj.attachEvent("on"+type, fn);
+  }
+}
+
 function init(){
   g.wpmSelect = document.getElementById("wpmSelect");
   g.wordField = document.getElementById("wordField");
+  g.nonLetterIndexFront = 0;
+  g.nonLetterIndexBack = 0;
+  var counter = 50;
+  var max = 2000;
+  g.speedArr = [];
+  for(var i = 50; i <= 2000; i = i + 50){
+    g.speedArr.push(i);
+  }
+
+  addEvent(g.wpmSelect, "change", updateSpeed);
   retrieveInitialLineAndSpeed();
 }
 

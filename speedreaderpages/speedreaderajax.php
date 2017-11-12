@@ -6,43 +6,47 @@ if(isset($_SESSION['user']) && $_SERVER['REQUEST_METHOD'] == 'POST'){
   require "../readerclasses/JSONResponse.php";
   $user = $_SESSION['user'];
   $daoManager = new DAOManager();
-
+  $userRecord;
+  $bookline;
   if(isset($_POST['request']) && $_POST['request'] == 'initial'){
     $userRecord = $daoManager->retrieveUserRecord($user);
     $bookline = $daoManager->retrieveBookLine($userRecord['last_line']);
     while(empty($bookline)){
-      $daoManager->updateUserBookLine($user);
-      $userRecord = $daoManager->retrieveUserRecord($user);
-      $bookline = $daoManager->retrieveBookLine($userRecord['last_line']);
+      retrieveNextLine();
     }
-    $lineResponse = new JSONResponse($bookline, $userRecord['speed']);
-    header('Content-Type: application/json');
-    echo json_encode($lineResponse, JSON_NUMERIC_CHECK | JSON_PRETTY_PRINT);
+    sendJSONResponse();
   }
 
   if(isset($_POST['request']) && $_POST['request'] == 'next'){
-    $daoManager->updateUserBookLine($user);
-    $userRecord = $daoManager->retrieveUserRecord($user);
-    $bookline = $daoManager->retrieveBookLine($userRecord['last_line']);
+    retrieveNextLine();
     while(empty($bookline)){
-      $daoManager->updateUserBookLine($user);
-      $userRecord = $daoManager->retrieveUserRecord($user);
-      $bookline = $daoManager->retrieveBookLine($userRecord['last_line']);
+      retrieveNextLine();
     }
-    $lineResponse = new JSONResponse($bookline, $userRecord['speed']);
-    header('Content-Type: application/json');
-    echo json_encode($lineResponse, JSON_NUMERIC_CHECK | JSON_PRETTY_PRINT);
+    sendJSONResponse();
   }
 
   if(isset($_POST['selectedSpeed'])){
     if(validateSpeedSelection()){
       $daoManager->updateUserSpeed($user, $_POST['selectedSpeed']);
     }
-    echo json_encode("updated", JSON_NUMERIC_CHECK | JSON_PRETTY_PRINT);
   }
 } else {
   header('Location: ../index.php');
   exit;
+}
+
+function sendJSONResponse(){
+  global $bookline, $userRecord;
+  $lineResponse = new JSONResponse($bookline, $userRecord['speed']);
+  header('Content-Type: application/json');
+  echo json_encode($lineResponse, JSON_NUMERIC_CHECK | JSON_PRETTY_PRINT);
+}
+
+function retrieveNextLine(){
+ global $daoManager, $userRecord, $bookline, $user;
+ $daoManager->updateUserBookLine($user);
+ $userRecord = $daoManager->retrieveUserRecord($user);
+ $bookline = $daoManager->retrieveBookLine($userRecord['last_line']);
 }
 
 function validateSpeedSelection(){
