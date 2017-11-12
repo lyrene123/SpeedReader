@@ -116,7 +116,6 @@ body.masthead .intro-text .login {
 .word {
   text-align: left;
   font-family: monospace;
-  padding: 5px;
   font-size: 25px;
   background: #f2f2f2;
   color: black;
@@ -125,6 +124,7 @@ body.masthead .intro-text .login {
   border: 0.5px solid black;
   margin: 0 auto;
   display: inline-block;
+  white-space: pre;
 }
 
 .focus {
