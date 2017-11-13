@@ -1,8 +1,16 @@
 <?php
-$user="";
-$password="";
+/**
+* The following index page handles the user authentication for the Speed Reader
+* website. If the login/registration form has not yet been submitted,
+* then the login/registration will be displayed. If form has been submitted,
+* then user input will be validated based on if the userid already exists or not.
+* If userid provided exists, then a login will be performed and if not, then a
+* registration will be performed.
+*/
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	require "daoclasses/DAOManager.php";
+	$user="";
+	$password="";
 	$messageUser = validateUser();
 	$messagePassword = validatePassword();
 

@@ -30,13 +30,13 @@ class DAOManager
     $this->password = $dbConfig->getPassword();
     $this->dbname = $dbConfig->getDbName();
     $this->port = $dbConfig->getPort();
-    $this->pdo = new PDO("pgsql:dbname=$this->dbname;host=$this->serverName;port=$this->port;sslmode=require",$this->user,$this->password);
   }
 
   function createTables(){
     try{
+      $this->pdo = new PDO("pgsql:dbname=$this->dbname;host=$this->serverName;port=$this->port;sslmode=require",$this->user,$this->password);
       $this->pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-      $query = 'DROP TABLE IF EXISTS user_reader;
+      $query = "DROP TABLE IF EXISTS user_reader;
       DROP TABLE IF EXISTS book;
       DROP TABLE IF EXISTS blockeduser_reader;
       CREATE TABLE book(
@@ -53,7 +53,7 @@ class DAOManager
       CREATE TABLE blockeduser_reader(
         userid varchar(60) NOT NULL PRIMARY KEY,
         timeblocked timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-      );';
+      );";
       $this->pdo->exec($query);
     } catch (PDOException $e){
       echo $e->getMessage();
@@ -72,6 +72,7 @@ class DAOManager
         continue;
       }
       try{
+        $this->pdo = new PDO("pgsql:dbname=$this->dbname;host=$this->serverName;port=$this->port;sslmode=require",$this->user,$this->password);
         $this->pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
         $query = $this->pdo -> prepare('INSERT INTO book (book_line) VALUES (?)');
         $query->bindValue(1,$line);
@@ -87,6 +88,7 @@ class DAOManager
 
   function isUserExists($userid){
     try{
+      $this->pdo = new PDO("pgsql:dbname=$this->dbname;host=$this->serverName;port=$this->port;sslmode=require",$this->user,$this->password);
       $this->pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
       $query = $this->pdo -> prepare("SELECT * FROM user_reader WHERE userid = ?");
@@ -107,6 +109,7 @@ class DAOManager
 
   function addUser($userid, $pwd){
     try{
+      $this->pdo = new PDO("pgsql:dbname=$this->dbname;host=$this->serverName;port=$this->port;sslmode=require",$this->user,$this->password);
       $this->pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
       $query = $this->pdo -> prepare("INSERT INTO user_reader(userid, password,
@@ -125,6 +128,7 @@ class DAOManager
 
   function getLoginAttempts($userid){
     try{
+      $this->pdo = new PDO("pgsql:dbname=$this->dbname;host=$this->serverName;port=$this->port;sslmode=require",$this->user,$this->password);
       $this->pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
       $query = $this->pdo -> prepare("SELECT loginattempts FROM user_reader WHERE userid = ?");
@@ -141,6 +145,7 @@ class DAOManager
 
   function getHash($userid){
     try{
+      $this->pdo = new PDO("pgsql:dbname=$this->dbname;host=$this->serverName;port=$this->port;sslmode=require",$this->user,$this->password);
       $this->pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
       $query = $this->pdo -> prepare("SELECT password FROM user_reader WHERE userid = ?");
@@ -157,6 +162,7 @@ class DAOManager
 
   function incrementLoginAttempts($userid){
     try{
+      $this->pdo = new PDO("pgsql:dbname=$this->dbname;host=$this->serverName;port=$this->port;sslmode=require",$this->user,$this->password);
       $this->pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
       $query = $this->pdo -> prepare("UPDATE user_reader SET loginattempts = loginattempts + 1 WHERE userid = ?");
@@ -171,6 +177,7 @@ class DAOManager
 
   function resetLoginAttempts($userid){
     try{
+      $this->pdo = new PDO("pgsql:dbname=$this->dbname;host=$this->serverName;port=$this->port;sslmode=require",$this->user,$this->password);
       $this->pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
       $query = $this->pdo -> prepare("UPDATE user_reader SET loginattempts = 0 WHERE userid = ?");
@@ -185,6 +192,7 @@ class DAOManager
 
   function addBlockedUser($userid){
     try{
+      $this->pdo = new PDO("pgsql:dbname=$this->dbname;host=$this->serverName;port=$this->port;sslmode=require",$this->user,$this->password);
       $this->pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
       $query = $this->pdo -> prepare("INSERT INTO blockeduser_reader(userid,timeblocked)
@@ -203,6 +211,7 @@ class DAOManager
 
   function isBlockedUserExists($userid){
     try{
+      $this->pdo = new PDO("pgsql:dbname=$this->dbname;host=$this->serverName;port=$this->port;sslmode=require",$this->user,$this->password);
       $this->pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
       $query = $this->pdo -> prepare("SELECT * FROM blockeduser_reader WHERE userid = ?");
@@ -223,6 +232,7 @@ class DAOManager
 
   function isUserStillBlocked($userid){
     try{
+      $this->pdo = new PDO("pgsql:dbname=$this->dbname;host=$this->serverName;port=$this->port;sslmode=require",$this->user,$this->password);
       $this->pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
       $query = $this->pdo -> prepare("SELECT * FROM blockeduser_reader WHERE userid = ?
@@ -244,6 +254,7 @@ class DAOManager
 
   function unblockUser($userid){
     try{
+      $this->pdo = new PDO("pgsql:dbname=$this->dbname;host=$this->serverName;port=$this->port;sslmode=require",$this->user,$this->password);
       $this->pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
       $query = $this->pdo -> prepare("DELETE FROM blockeduser_reader WHERE userid = ?");
@@ -258,6 +269,7 @@ class DAOManager
 
   function retrieveBookLine($line){
     try{
+      $this->pdo = new PDO("pgsql:dbname=$this->dbname;host=$this->serverName;port=$this->port;sslmode=require",$this->user,$this->password);
       $this->pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
       $query = $this->pdo -> prepare("SELECT book_line FROM book WHERE line = ?");
@@ -274,6 +286,7 @@ class DAOManager
 
   function retrieveUserRecord($userid){
     try{
+      $this->pdo = new PDO("pgsql:dbname=$this->dbname;host=$this->serverName;port=$this->port;sslmode=require",$this->user,$this->password);
       $this->pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
       $query = $this->pdo -> prepare("SELECT * FROM user_reader WHERE userid = ?");
@@ -291,6 +304,7 @@ class DAOManager
 
   function updateUserBookLine($userid){
     try{
+      $this->pdo = new PDO("pgsql:dbname=$this->dbname;host=$this->serverName;port=$this->port;sslmode=require",$this->user,$this->password);
       $this->pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
       $totalRecords = $this->getTotalRecordCount();
       $currentLine = $this->getUserCurrentLine($userid);
@@ -311,6 +325,7 @@ class DAOManager
 
   function updateUserSpeed($userid, $speed){
     try{
+      $this->pdo = new PDO("pgsql:dbname=$this->dbname;host=$this->serverName;port=$this->port;sslmode=require",$this->user,$this->password);
       $this->pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
       $query = $this->pdo -> prepare("UPDATE user_reader SET speed = ? WHERE userid = ?");
       $query->bindValue(1, $speed);
@@ -326,6 +341,7 @@ class DAOManager
 
   private function getTotalRecordCount(){
     try{
+      $this->pdo = new PDO("pgsql:dbname=$this->dbname;host=$this->serverName;port=$this->port;sslmode=require",$this->user,$this->password);
       $this->pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
       $query = $this->pdo -> prepare("SELECT * FROM book");
@@ -341,6 +357,7 @@ class DAOManager
 
   private function getUserCurrentLine($userid){
     try{
+      $this->pdo = new PDO("pgsql:dbname=$this->dbname;host=$this->serverName;port=$this->port;sslmode=require",$this->user,$this->password);
       $this->pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
       $query = $this->pdo -> prepare("SELECT last_line FROM user_reader WHERE userid = ?");
