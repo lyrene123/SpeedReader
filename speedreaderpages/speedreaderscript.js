@@ -37,10 +37,15 @@ function determineFocusLetter(wordLength, frontElementsLength){
 function buildWord(word){
   var frontElements = extractNonLettersFront(word);
   var backElements = extractNonLettersBack(word);
-  //console.log("back element: " + backElements);
-  //console.log("front elements: " + frontElements);
   var wordElement = extractWordFromStr(word);
-  //console.log("word element: " + wordElement);
+
+  if(frontElements === wordElement){
+    frontElements = "";
+  }
+
+  if(backElements === wordElement){
+    backElements = "";
+  }
 
   var focusElements = determineFocusLetter(wordElement.length, frontElements.length);
   var formattedWord = focusElements[1] + frontElements;
@@ -103,11 +108,9 @@ function displayLine(line, speed){
   var counter = 0;
   var pauseLength = calculatePauseLength(speed);
   g.wordLoop = setInterval(function(){
-    console.log("Displaying word: " + wordsArr[counter]);
     g.wordField.innerHTML = buildWord(wordsArr[counter]);
     counter++;
     if(counter === wordsArr.length) {
-      console.log("End of sentence");
       clearInterval(g.wordLoop);
       retrieveNextLineAndSpeed();
     }
@@ -126,7 +129,6 @@ function displaySpeed(speed){
 function updateSpeed(){
   var selectedSpeed = g.wpmSelect.value;
   if(selectedSpeed.match(/^\d+$/) && g.speedArr.indexOf(selectedSpeed) !== -1){
-    console.log("Updating speed with " + selectedSpeed);
     var req = new XMLHttpRequest();
     req.open("POST", "speedreaderajax.php", true);
     req.setRequestHeader('Content-type','application/x-www-form-urlencoded');
@@ -145,7 +147,6 @@ function retrieveNextLineAndSpeed(){
 }
 
 function retrieveLineAndSpeedFromDb(request){
-  console.log("Retrieving line and speed....");
   var req = new XMLHttpRequest();
   req.open("POST", "speedreaderajax.php", true);
   req.onreadystatechange = function() {
@@ -154,7 +155,6 @@ function retrieveLineAndSpeedFromDb(request){
       if(jsonResponse !== null){
         var line = jsonResponse.book_line;
         var speed = jsonResponse.speed;
-        console.log("current line: " + line + " speed: " + speed);
         displaySpeed(speed);
         displayLine(line+"", speed);
       }
@@ -174,7 +174,6 @@ function addEvent(obj, type, fn) {
 }
 
 function logoutSession(){
-  console.log("Logging out!");
   clearInterval(g.wordLoop);
   var req = new XMLHttpRequest();
   req.open("POST", "speedreaderajax.php", true);

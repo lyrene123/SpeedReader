@@ -10,7 +10,6 @@ p {
   font-size: 25px;
 }
 
-
 hr.star-light, hr.star-primary {
   max-width: 250px;
   margin: 25px auto 30px;
@@ -156,7 +155,7 @@ body.masthead {
 }
 
 .story {
-  font-size: 2.5rem;
+  font-size: 2.8rem;
   margin: 0;
   color: #523A90;
 }
@@ -172,49 +171,15 @@ body.masthead {
   padding: 15px;
 }
 
-#mainNav a:focus {
-    outline: none;
-}
-
 #mainNav .navbar-brand {
   font-size: 2.5rem;
-  color: white;
-  letter-spacing: 3px;
-}
-
-#mainNav .navbar-brand.active, #mainNav .navbar-brand:active,
-#mainNav .navbar-brand:focus, #mainNav .navbar-brand:hover {
   color: white;
 }
 
 #mainNav .navbar-nav {
-  letter-spacing: 3px;
   font-size: 20px;
 }
 
-#mainNav .navbar-nav li.nav-item a.nav-link {
-  color: white;
-}
-
-#mainNav .navbar-nav li.nav-item a.nav-link:hover {
-  color: #8195D7;
-  outline: none;
-}
-
-#mainNav .navbar-nav li.nav-item a.nav-link:active,
-#mainNav .navbar-nav li.nav-item a.nav-link:focus {
-  color: white;
-}
-
-#mainNav .navbar-toggler {
-  font-size: 14px;
-  padding: 11px;
-  color: white;
-  border-color: white;
-}
-
-#mainNav .navbar-toggler:focus, #mainNav .navbar-toggler:hover {
-  color: white;
-  border-color: #8195D7;
-  background-color: #8195D7;
+.nav-link {
+  border: 0;
 }

@@ -29,7 +29,7 @@ if(isset($_SESSION['user'])){
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link"><button id="logout">Log Out</button></a>
+            <a><button id="logout" class="nav-link">Log Out</button></a>
           </li>
         </ul>
       </div>
@@ -40,8 +40,8 @@ if(isset($_SESSION['user'])){
     <p class="greetings">Hello <span id="user"><?php if(isset($user)) echo $user; ?>,</span>
         You're currently reading :</p>
     <p class="story">The Wizard Of Oz by L. Frank Baum</p>
-    <p class="credits">Taken from this
-      <a href="http://www.textfiles.com/etext/FICTION/wizrd_oz">link</a> based on Project Gutenberg</p>
+    <p class="credits">Taken from
+      <a href="http://www.textfiles.com/etext/FICTION/wizrd_oz">here</a> based on Project Gutenberg</p>
     <div id="wordField" class="word">loading...</div>
     <div class="speedSelect">
       <select name=wpmArr[] id="wpmSelect">

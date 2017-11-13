@@ -8,7 +8,7 @@ if(isset($_SESSION['user']) && $_SERVER['REQUEST_METHOD'] == 'POST'){
   $daoManager = new DAOManager();
   $userRecord;
   $bookline;
-  if(isset($_POST['request']) && $_POST['request'] == 'initial'){
+  if(isset($_POST['request']) && $_POST['request'] === 'initial'){
     $userRecord = $daoManager->retrieveUserRecord($user);
     $bookline = $daoManager->retrieveBookLine($userRecord['last_line']);
     while(empty($bookline)){
@@ -17,7 +17,7 @@ if(isset($_SESSION['user']) && $_SERVER['REQUEST_METHOD'] == 'POST'){
     sendJSONResponse();
   }
 
-  if(isset($_POST['request']) && $_POST['request'] == 'next'){
+  if(isset($_POST['request']) && $_POST['request'] === 'next'){
     retrieveNextLine();
     while(empty($bookline)){
       retrieveNextLine();
@@ -25,7 +25,7 @@ if(isset($_SESSION['user']) && $_SERVER['REQUEST_METHOD'] == 'POST'){
     sendJSONResponse();
   }
 
-  if(isset($_POST['request']) && $_POST['request'] == 'logout'){
+  if(isset($_POST['request']) && $_POST['request'] === 'logout'){
     $_SESSION = array();
     session_destroy();
     header('Content-Type: application/json');
