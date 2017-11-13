@@ -129,10 +129,12 @@ function displaySpeed(speed){
 function updateSpeed(){
   var selectedSpeed = g.wpmSelect.value;
   if(selectedSpeed.match(/^\d+$/) && g.speedArr.indexOf(selectedSpeed) !== -1){
-    var req = new XMLHttpRequest();
-    req.open("POST", "speedreaderajax.php", true);
-    req.setRequestHeader('Content-type','application/x-www-form-urlencoded');
-    req.send('selectedSpeed=' + selectedSpeed);
+    if(parseInt(selectedSpeed) >= 50 && parseInt(selectedSpeed) <= 2000){
+      var req = new XMLHttpRequest();
+      req.open("POST", "speedreaderajax.php", true);
+      req.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+      req.send('selectedSpeed=' + selectedSpeed);
+    }
   }
 }
 

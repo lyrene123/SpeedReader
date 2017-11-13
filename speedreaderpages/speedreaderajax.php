@@ -33,9 +33,9 @@ if(isset($_SESSION['user']) && $_SERVER['REQUEST_METHOD'] == 'POST'){
   }
 
   if(isset($_POST['selectedSpeed'])){
-    if(validateSpeedSelection()){
+    //if(validateSpeedSelection()){
       $daoManager->updateUserSpeed($user, $_POST['selectedSpeed']);
-    }
+  //  }
   }
 } else {
   header('Location: ../index.php');
