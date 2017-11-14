@@ -89,7 +89,7 @@ function displayLine(line, speed){
 *
 */
 function displaySpeed(speed){
-  g.wpmSelect.options[speed].selected = true;
+  g.wpmSelect.options[speed+""].selected = true;
   /*for (var i = 0; i < g.wpmSelect.options.length; i++) {
     if (g.wpmSelect.options[i].text == speed) {
       g.wpmSelect.options[i].selected = true;
