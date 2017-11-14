@@ -160,9 +160,7 @@ function retrieveLineAndSpeedFromDb(request){
       if(jsonResponse !== null){
         var line = jsonResponse.book_line;
         var speed = jsonResponse.speed;
-        if(request === 'initial'){
-          displaySpeed(speed);
-        }
+        displaySpeed(speed);
         displayLine(line+"", speed);
       }
     }
