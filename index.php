@@ -14,10 +14,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	$messageUser = validateUser();
 	$messagePassword = validatePassword();
 
+	//if userid and password are valid, then login/register
 	if(($messageUser == null || empty($messageUser)) &&
 	($messagePassword == null || empty($messagePassword))){
 		handleUserLoginCreation();
 	} else {
+		//display error message if userid/password invalid
 		$message = $messageUser == null ? $messagePassword : $messageUser;
 		include 'loginpages/loginpage.php';
 	}

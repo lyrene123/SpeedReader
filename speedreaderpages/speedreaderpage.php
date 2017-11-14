@@ -26,10 +26,10 @@ if(isset($_SESSION['user'])){
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
       <span class="navbar-brand">Speed Reader</span>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
+      <div class="col-xs-3 pull-rights">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a><button id="logout" class="nav-link">Log Out</button></a>
+            <a id="logout" class="btn btn-purple">Log Out</a>
           </li>
         </ul>
       </div>

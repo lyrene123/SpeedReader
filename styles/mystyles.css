@@ -183,3 +183,8 @@ body.masthead {
 .nav-link {
   border: 0;
 }
+
+.btn-purple {
+  background-color: #a08dd1;
+  color: white;
+}
