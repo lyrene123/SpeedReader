@@ -139,12 +139,12 @@ function updateSpeed(){
 }
 
 function retrieveInitialLineAndSpeed(){
-  console.log("Initial line and speed set up....");
+  //console.log("Initial line and speed set up....");
   retrieveLineAndSpeedFromDb('initial');
 }
 
 function retrieveNextLineAndSpeed(){
-  console.log("Retrieving next line....");
+//  console.log("Retrieving next line....");
   retrieveLineAndSpeedFromDb('next');
 }
 
