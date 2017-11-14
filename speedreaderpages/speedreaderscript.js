@@ -115,7 +115,7 @@ function displayLine(line, speed){
       g.wordField.innerHTML = buildWord(wordsArr[counter]);
       counter++;
     } else if (counter === wordsArr.length) {
-      //clearInterval(g.wordLoop);
+      clearInterval(g.wordLoop);
       retrieveNextLineAndSpeed();
     }
   }, pauseLength);
