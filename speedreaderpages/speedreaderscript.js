@@ -161,7 +161,7 @@ function retrieveLineAndSpeedFromDb(request){
         displaySpeed(speed);
         displayLine(line+"", speed);
       }
-    } else {
+    } else if (req.readyState == 4) {
       g.speedReaderError.innerText = "Something bad happened. Problem displaying words.";
     }
   };
