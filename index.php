@@ -19,15 +19,21 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	($messagePassword == null || empty($messagePassword))){
 		handleUserLoginCreation();
 	} else {
-		//display error message if userid/password invalid
+		//display error message if userid/password invalid with the form
 		$message = $messageUser == null ? $messagePassword : $messageUser;
 		include 'loginpages/loginpage.php';
 	}
 } else {
+	//if form is not submitted, display form
 	$message = "";
 	include 'loginpages/loginpage.php';
 }
 
+/**
+* Handles the form's submission based on the existance of the userid.
+* If the userid exists, then the user will be logged in. If userid doesn't
+* exists, then user will be registrated.
+*/
 function handleUserLoginCreation(){
 	global $user, $password;
 	$daoManager = new DAOManager();
@@ -38,6 +44,11 @@ function handleUserLoginCreation(){
 	}
 }
 
+/**
+* Handles the user login. Checks the amount of login attempts, and blocks user
+* if too many login attemps. If login attempts is okay, then verify the user
+* password combination.
+*/
 function handleUserLogin(DAOManager $daoManager){
 	global $user, $password;
 	if($daoManager->getLoginAttempts($user) === 3){
@@ -47,14 +58,20 @@ function handleUserLogin(DAOManager $daoManager){
 	}
 }
 
+/**
+* Handles the blocking of a user account when too many login attempts has been
+* made. If user is blocked, an error page will be displayed.
+*/
 function handleBlockedUser(DAOManager $daoManager){
 	global $user, $password;
+	//if user is not yet in the blocked user table, then add user to that table + display error page
 	if(!$daoManager->isBlockedUserExists($user)){
 		if($daoManager->addBlockedUser($user)){
 			header('Location: loginpages/loginpageerror.php');
 			exit;
 		}
 	} else {
+		//if user is already in 
 		if($daoManager->isUserStillBlocked($user)){
 			header('Location: loginpages/loginpageerror.php');
 			exit;
