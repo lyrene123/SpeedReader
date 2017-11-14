@@ -1,4 +1,9 @@
 <?php
+/**
+* Validate whether or not the user has logged in.
+* If yes, then proceed to display the speed reader page.
+* If not, then redirect to the index page.
+*/
 session_start();
 session_regenerate_id();
 if(isset($_SESSION['user'])){
@@ -9,6 +14,10 @@ if(isset($_SESSION['user'])){
 }
 ?>
 
+<!-- The following html page will display the speed reader activity. Contains
+      the display for the words of a book line, a select drop down list for the
+      user to choose a speed, the title and author of the book, the source text,
+      and a log out button. -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,7 +40,6 @@ if(isset($_SESSION['user'])){
           <li class="nav-item">
             <form action="../index.php" method="get">
               <input type="submit" name="submit" class="btn btn-purple" value="Logout" />
-              <!--<a id="logout" >Log Out</a></input>-->
             </form>
           </li>
         </ul>
@@ -49,6 +57,7 @@ if(isset($_SESSION['user'])){
     <div class="speedSelect">
       <select name=wpmArr[] id="wpmSelect">
         <?php
+        //construct the options of the select by adding values between 50 to 20000 interval of 50
         $counter = 50;
         $max = 2000;
         for($i = 50; $i <= 2000; $i = $i + 50){

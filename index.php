@@ -58,6 +58,8 @@ function handleUserLoginCreation(){
 * Handles the user login. Checks the amount of login attempts, and blocks user
 * if too many login attemps. If login attempts is okay, then verify the user
 * password combination.
+*
+* @param daoManager - DAOManager object
 */
 function handleUserLogin(DAOManager $daoManager){
 	global $user, $password;
@@ -71,6 +73,8 @@ function handleUserLogin(DAOManager $daoManager){
 /**
 * Handles the blocking of a user account when too many login attempts has been
 * made. If user is blocked, an error page will be displayed.
+*
+* @param daoManager - DAOManager object
 */
 function handleBlockedUser(DAOManager $daoManager){
 	global $user, $password;
@@ -101,6 +105,8 @@ function handleBlockedUser(DAOManager $daoManager){
 * password entered in the form. If valid, then login attempts are reset and user can login.
 * If not valid, then user's login attempts are incremented and error message
 * is displayed along with the form once again.
+*
+* @param daoManager - DAOManager object
 */
 function handleUserPasswdVerification(DAOManager $daoManager){
 	global $user, $password;
@@ -118,6 +124,8 @@ function handleUserPasswdVerification(DAOManager $daoManager){
 /**
 * Handles the user registration and auto login the user once registration
 * is done.
+*
+* @param daoManager - DAOManager object
 */
 function handleUserCreation(DAOManager $daoManager){
 	global $user, $password;

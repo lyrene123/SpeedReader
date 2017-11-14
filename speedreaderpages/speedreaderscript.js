@@ -86,20 +86,28 @@ function displayLine(line, speed){
 }
 
 /**
+* Displays the speed retrieved from the database on the select drop down list
 *
+* @param {String} speed
+*         Speed selected by user in String format
 */
 function displaySpeed(speed){
-  g.wpmSelect.options[speed+""].selected = true;
-  /*for (var i = 0; i < g.wpmSelect.options.length; i++) {
+  for (var i = 0; i < g.wpmSelect.options.length; i++) {
     if (g.wpmSelect.options[i].text == speed) {
       g.wpmSelect.options[i].selected = true;
       return;
     }
-  }*/
+  }
 }
 
+/**
+* Event handler for the select onchange event.
+* Updates the speed with the new speed selected by the user by making an ajax
+* request to the database to update the user's speed in the table.
+*/
 function updateSpeed(){
   var selectedSpeed = g.wpmSelect.value;
+  //validates first if the selected speed is a number between 50 - 20000
   if(selectedSpeed.match(/^\d+$/) && g.speedArr.indexOf(selectedSpeed) !== -1){
     var req = new XMLHttpRequest();
     req.open("POST", "speedreaderajax.php", true);
@@ -108,14 +116,29 @@ function updateSpeed(){
   }
 }
 
+/**
+* Retrieves the initial line and speed from the database when user first logs in.
+*/
 function retrieveInitialLineAndSpeed(){
   retrieveLineAndSpeedFromDb('initial');
 }
 
+/**
+* Retrieves the next line and speed from the database.
+*/
 function retrieveNextLineAndSpeed(){
   retrieveLineAndSpeedFromDb('next');
 }
 
+/**
+* Retrieves a line and speed from the database depending if the request is the
+* initial line or the next line in the book. Sends an ajax request with the type
+* of request.
+*
+* @param {String} request
+*         Type of request to be sent in the ajax message for the initial line
+          or the next line in the book.
+*/
 function retrieveLineAndSpeedFromDb(request){
   var req = new XMLHttpRequest();
   req.open("POST", "speedreaderajax.php", true);
@@ -136,6 +159,9 @@ function retrieveLineAndSpeedFromDb(request){
   req.send('request=' + request);
 }
 
+/**
+* Adds an event with browser compatibility
+*/
 function addEvent(obj, type, fn) {
   if (obj && obj.addEventListener) {
     obj.addEventListener(type, fn, false);
@@ -145,13 +171,17 @@ function addEvent(obj, type, fn) {
   }
 }
 
+/**
+* Initializes the global variables. Retrieves handles to some html objects such
+* as the speed select drop down list, the word field, etc. Initializes
+* the array of valid wpm speed to be used to compare with the user's speed selection
+* whether or not it's a valid speed that we expect. Attaches the onchange event
+* to the select object. Retrieves the initial line and speed.
+*/
 function init(){
   g.wpmSelect = document.getElementById("wpmSelect");
   g.wordField = document.getElementById("wordField");
-  g.logout = document.getElementById("logout");
   g.speedReaderError = document.getElementById("speedReaderError");
-  g.nonLetterIndexFront = 0;
-  g.nonLetterIndexBack = 0;
   g.wordLoop = null;
   var counter = 50;
   var max = 2000;

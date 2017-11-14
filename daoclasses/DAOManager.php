@@ -1,4 +1,9 @@
 <?php
+/**
+* Encapsulates the properties and behavior of a Database Access Object helper
+* class in the Speed Reader web application. Contains access to database credentials
+* and methods to retrieve specific records from the database.
+*/
 class DAOManager
 {
   private $serverName;
@@ -7,6 +12,11 @@ class DAOManager
   private $dbname;
   private $port;
 
+  /**
+  * Constructor to initialize the database credentials and register
+  * class path files to automatically recognize class names when declared
+  * for the first time.
+  */
   public function __construct() {
     spl_autoload_register(function($class){
       $file = 'daoclasses/' . $class . '.php';
@@ -31,6 +41,11 @@ class DAOManager
     $this->port = $dbConfig->getPort();
   }
 
+  /**
+  * Creates the tables necessary for the web application which are the book table,
+  * the user_reader table, and the blockeduser_reader table. They dropped if existing
+  * before recreated.
+  */
   function createTables(){
     try{
       $pdo = new PDO("pgsql:dbname=$this->dbname;host=$this->serverName;port=$this->port;sslmode=require",$this->user,$this->password);
@@ -61,6 +76,10 @@ class DAOManager
     }
   }
 
+  /**
+  * Fill the book table with lines of a book taken from the link
+  * http://www.textfiles.com/etext/FICTION/wizrd_oz
+  */
   function fillBookTable(){
     $myfile = fopen("http://www.textfiles.com/etext/FICTION/wizrd_oz", "r");
     $prevline = "";
@@ -85,6 +104,12 @@ class DAOManager
     }
   }
 
+  /**
+  * Check if a username exists in the database.
+  *
+  * @param userid - a username to check in the database
+  * @return boolean true or false if username is found in the database
+  */
   function isUserExists($userid){
     try{
       $pdo = new PDO("pgsql:dbname=$this->dbname;host=$this->serverName;port=$this->port;sslmode=require",$this->user,$this->password);
@@ -106,6 +131,13 @@ class DAOManager
     }
   }
 
+  /**
+  * Adds a user in the user_reader table.
+  *
+  * @param userid - a username
+  * @param password - a password
+  * @return boolean true or false if record added successfully
+  */
   function addUser($userid, $pwd){
     try{
       $pdo = new PDO("pgsql:dbname=$this->dbname;host=$this->serverName;port=$this->port;sslmode=require",$this->user,$this->password);
@@ -125,6 +157,12 @@ class DAOManager
     }
   }
 
+  /**
+  * Returns the amount of login attempts of a user.
+  *
+  * @param userid - a username
+  * @return amount of login attempts for a user
+  */
   function getLoginAttempts($userid){
     try{
       $pdo = new PDO("pgsql:dbname=$this->dbname;host=$this->serverName;port=$this->port;sslmode=require",$this->user,$this->password);
@@ -142,6 +180,12 @@ class DAOManager
     }
   }
 
+  /**
+  * Returns the password hash of a user
+  *
+  * @param userid - a username
+  * @return a password hash
+  */
   function getHash($userid){
     try{
       $pdo = new PDO("pgsql:dbname=$this->dbname;host=$this->serverName;port=$this->port;sslmode=require",$this->user,$this->password);
@@ -159,6 +203,11 @@ class DAOManager
     }
   }
 
+  /**
+  * Increments the login attempts for a user
+  *
+  * @param userid - a username
+  */
   function incrementLoginAttempts($userid){
     try{
       $pdo = new PDO("pgsql:dbname=$this->dbname;host=$this->serverName;port=$this->port;sslmode=require",$this->user,$this->password);
@@ -174,6 +223,11 @@ class DAOManager
     }
   }
 
+  /**
+  * Resets the login attempts for a user to 0
+  *
+  * @param userid - a username
+  */
   function resetLoginAttempts($userid){
     try{
       $pdo = new PDO("pgsql:dbname=$this->dbname;host=$this->serverName;port=$this->port;sslmode=require",$this->user,$this->password);
@@ -189,6 +243,12 @@ class DAOManager
     }
   }
 
+  /**
+  * Adds a blocked user in the blockeduser_reader table
+  *
+  * @param userid - a username
+  * @return boolean if record was added
+  */
   function addBlockedUser($userid){
     try{
       $pdo = new PDO("pgsql:dbname=$this->dbname;host=$this->serverName;port=$this->port;sslmode=require",$this->user,$this->password);
@@ -208,6 +268,12 @@ class DAOManager
     }
   }
 
+  /**
+  * Checks if a user exists in the blockeduser_reader table
+  *
+  * @param userid - a username
+  * @return boolean if user was found in the blockeduser_reader table
+  */
   function isBlockedUserExists($userid){
     try{
       $pdo = new PDO("pgsql:dbname=$this->dbname;host=$this->serverName;port=$this->port;sslmode=require",$this->user,$this->password);
@@ -229,6 +295,12 @@ class DAOManager
     }
   }
 
+  /**
+  * Checks if a user is still blocked based on the timeout interval (5 minutes)
+  *
+  * @param userid - a username
+  * @return boolean is user is still blocked
+  */
   function isUserStillBlocked($userid){
     try{
       $pdo = new PDO("pgsql:dbname=$this->dbname;host=$this->serverName;port=$this->port;sslmode=require",$this->user,$this->password);
@@ -240,9 +312,9 @@ class DAOManager
       $query->execute();
       $result = $query->fetchAll();
       if(count($result) > 0){
-        return true; //still blocked
+        return true; //still blocked, still in the 5 minutes timeout
       } else {
-        return false;
+        return false; //no longer blocked, 5 minutes timeout have passed
       }
     } catch (PDOException $e){
       echo $e->getMessage();
@@ -251,6 +323,11 @@ class DAOManager
     }
   }
 
+  /**
+  * Unblocks the user by removing its record from the blockeduser_reader table
+  *
+  * @param userid - a username
+  */
   function unblockUser($userid){
     try{
       $pdo = new PDO("pgsql:dbname=$this->dbname;host=$this->serverName;port=$this->port;sslmode=require",$this->user,$this->password);
@@ -266,6 +343,12 @@ class DAOManager
     }
   }
 
+  /**
+  * Retrieves the book line based on a number
+  *
+  * @param line - a book line number
+  * @return the book line itself
+  */
   function retrieveBookLine($line){
     try{
       $pdo = new PDO("pgsql:dbname=$this->dbname;host=$this->serverName;port=$this->port;sslmode=require",$this->user,$this->password);
@@ -283,6 +366,12 @@ class DAOManager
     }
   }
 
+  /**
+  * Retrieve a full user record
+  *
+  * @param userid - a username
+  * @return a Reader instance
+  */
   function retrieveUserRecord($userid){
     try{
       $pdo = new PDO("pgsql:dbname=$this->dbname;host=$this->serverName;port=$this->port;sslmode=require",$this->user,$this->password);
@@ -301,6 +390,11 @@ class DAOManager
     }
   }
 
+  /**
+  * Updates the user's current book line
+  *
+  * @param userid - a username
+  */
   function updateUserBookLine($userid){
     try{
       $pdo = new PDO("pgsql:dbname=$this->dbname;host=$this->serverName;port=$this->port;sslmode=require",$this->user,$this->password);
@@ -322,6 +416,12 @@ class DAOManager
     }
   }
 
+  /**
+  * Updates the user's wpm speed
+  *
+  * @param userid - username
+  * @param speed - a wpm speed selection
+  */
   function updateUserSpeed($userid, $speed){
     try{
       $pdo = new PDO("pgsql:dbname=$this->dbname;host=$this->serverName;port=$this->port;sslmode=require",$this->user,$this->password);
@@ -330,7 +430,6 @@ class DAOManager
       $query->bindValue(1, $speed);
       $query->bindValue(2, $userid);
       $result = $query->execute();
-      var_dump($result);
     } catch (PDOException $e){
       echo $e->getMessage();
     } finally {
@@ -338,6 +437,11 @@ class DAOManager
     }
   }
 
+  /**
+  * Returns the total number of lines of the book
+  *
+  * @return total book lines
+  */
   private function getTotalRecordCount(){
     try{
       $pdo = new PDO("pgsql:dbname=$this->dbname;host=$this->serverName;port=$this->port;sslmode=require",$this->user,$this->password);
@@ -354,6 +458,12 @@ class DAOManager
     }
   }
 
+  /**
+  * Returns the user's current book line
+  *
+  * @param userid - username
+  * @return user's current book line
+  */
   private function getUserCurrentLine($userid){
     try{
       $pdo = new PDO("pgsql:dbname=$this->dbname;host=$this->serverName;port=$this->port;sslmode=require",$this->user,$this->password);
@@ -363,7 +473,6 @@ class DAOManager
       $query->bindValue(1, $userid);
       $query->execute();
       $result = $query->fetchAll();
-
       return $result[0][0];
     } catch (PDOException $e){
       echo $e->getMessage();
