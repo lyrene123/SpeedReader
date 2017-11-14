@@ -1,41 +1,41 @@
 var g = {};
 
-function determineFocusLetter(wordLength, frontElementsLength){
+function determineFocusLetter(wordLength){
   var focusElements;
-  var spaceCount;
+  //var spaceCount;
   switch (true) {
     case wordLength == 1:
-      focusElements = [0];
-      spaceCount = 4;
+      focusElements = [0, "&nbsp;&nbsp;&nbsp;&nbsp;"];
+    //  spaceCount = 4;
       break;
     case wordLength >= 2 && wordLength <= 5:
-      focusElements = [1];
-      spaceCount = 3;
+      focusElements = [1, "&nbsp;&nbsp;&nbsp;"];
+      //spaceCount = 3;
       break;
     case wordLength >= 6 && wordLength <= 9:
-      focusElements = [2];
-      spaceCount = 2;
+      focusElements = [2, "&nbsp;&nbsp;"];
+      //spaceCount = 2;
       break;
     case wordLength >= 10 && wordLength <= 13:
-      focusElements = [3];
-      spaceCount = 1;
+      focusElements = [3, "&nbsp;"];
+      //spaceCount = 1;
       break;
     default:
-      focusElements = [4];
-      spaceCount = 0;
+      focusElements = [4, ""];
+      //spaceCount = 0;
   }
 
-  var totalSpaces = spaceCount - frontElementsLength;
+  /*var totalSpaces = spaceCount - frontElementsLength;
   var spaces = "";
   for(var i = 1; i <= totalSpaces; i++){
     spaces += "&nbsp;";
   }
-  focusElements.push(spaces);
+  focusElements.push(spaces);*/
   return focusElements;
 }
 
 function buildWord(word){
-  var frontElements = extractNonLettersFront(word);
+/*  var frontElements = extractNonLettersFront(word);
   var backElements = extractNonLettersBack(word);
   var wordElement = extractWordFromStr(word);
 
@@ -45,18 +45,21 @@ function buildWord(word){
 
   if(backElements === wordElement){
     backElements = "";
-  }
+  }*/
 
-  var focusElements = determineFocusLetter(wordElement.length, frontElements.length);
-  var formattedWord = focusElements[1] + frontElements;
-  for(var i = 0; i < wordElement.length; i++){
+  var focusElements = determineFocusLetter(wordElement.length);
+  //var formattedWord = focusElements[1];
+  /*for(var i = 0; i < word.length; i++){
     if(i == focusElements[0]){
-      formattedWord += '<span class="focus">' + wordElement.charAt(focusElements[0]) + "</span>";
+      formattedWord += '<span class="focus">' + word.charAt(focusElements[0]) + "</span>";
     } else {
-      formattedWord += wordElement.charAt(i);
+      formattedWord += word.charAt(i);
     }
-  }
-  formattedWord += backElements;
+  }*/
+  //formattedWord += backElements;
+  var formattedWord = focusElements[1] + word.substring(0, focusElements[0]);
+  formattedWord += '<span class="focus">' + word.charAt(focusElements[0]) + "</span>";
+  formattedWord += word.substring(focusElements[0]+1);
   return formattedWord;
 }
 
