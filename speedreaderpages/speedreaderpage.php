@@ -30,7 +30,7 @@ if(isset($_SESSION['user'])){
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
             <form action="../index.php" method="get">
-              <input type="submit" name="submit" class="btn btn-purple" placeholder="Logout" />
+              <input type="submit" name="submit" class="btn btn-purple" value="Logout" />
               <!--<a id="logout" >Log Out</a></input>-->
             </form>
           </li>

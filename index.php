@@ -24,7 +24,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 		include 'loginpages/loginpage.php';
 	}
 } else {
-	if(isset($_GET['submit']) && $_GET['submit'] === 'Submit'){
+	if(isset($_GET['submit']) && $_GET['submit'] == 'Submit'){
+		echo "HEREEEE";
 		$_SESSION = array();
 		session_destroy();
 	}
