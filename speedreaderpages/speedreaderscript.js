@@ -40,14 +40,14 @@ function buildWord(word){
   var wordElement = extractWordFromStr(word);
 
   if(frontElements === wordElement){
-    frontElements = "";
+    frontElements = "";``
   }
 
   if(backElements === wordElement){
     backElements = "";
   }*/
 
-  var focusElements = determineFocusLetter(wordElement.length);
+  var focusElements = determineFocusLetter(word.length);
   //var formattedWord = focusElements[1];
   /*for(var i = 0; i < word.length; i++){
     if(i == focusElements[0]){
