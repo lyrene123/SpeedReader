@@ -111,10 +111,9 @@ function displayLine(line, speed){
   var counter = 0;
   var pauseLength = calculatePauseLength(speed);
   g.wordLoop = setInterval(function(){
-    if(counter < wordsArr.length){
-      g.wordField.innerHTML = buildWord(wordsArr[counter]);
-      counter++;
-    } else if (counter === wordsArr.length) {
+    g.wordField.innerHTML = buildWord(wordsArr[counter]);
+    counter++;
+    if(counter === wordsArr.length) {
       clearInterval(g.wordLoop);
       retrieveNextLineAndSpeed();
     }
