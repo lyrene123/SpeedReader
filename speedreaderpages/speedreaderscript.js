@@ -49,18 +49,16 @@ function buildWord(word){
 
   var focusElements = determineFocusLetter(wordElement.length, frontElements.length);
   var formattedWord = focusElements[1] + frontElements;
-  /*for(var i = 0; i < wordElement.length; i++){
+  for(var i = 0; i < wordElement.length; i++){
     if(i == focusElements[0]){
       formattedWord += '<span class="focus">' + wordElement.charAt(focusElements[0]) + "</span>";
     } else {
       formattedWord += wordElement.charAt(i);
     }
-  }*/
-  formattedWord += wordElement.substring(0, focusElements[0]);
-  formattedWord += '<span class="focus">' + wordElement.charAt(focusElements[0]) + "</span>";
-  //if(focusElements[0]+1 <= wordElement.length){
-    formattedWord += wordElement.substring(focusElements[0]+1);
-  //}
+  }
+//  formattedWord += wordElement.substring(0, focusElements[0]);
+  //formattedWord += '<span class="focus">' + wordElement.charAt(focusElements[0]) + "</span>";
+  //formattedWord += wordElement.substring(focusElements[0]+1);
   formattedWord += backElements;
   return formattedWord;
 }
