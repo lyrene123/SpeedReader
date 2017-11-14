@@ -111,10 +111,11 @@ function displayLine(line, speed){
   var counter = 0;
   var pauseLength = calculatePauseLength(speed);
   g.wordLoop = setInterval(function(){
-    g.wordField.innerHTML = buildWord(wordsArr[counter]);
-    counter++;
-    if(counter === wordsArr.length) {
-      clearInterval(g.wordLoop);
+    if(counter < wordsArr.length){
+      g.wordField.innerHTML = buildWord(wordsArr[counter]);
+      counter++;
+    } else if (counter === wordsArr.length) {
+      //clearInterval(g.wordLoop);
       retrieveNextLineAndSpeed();
     }
   }, pauseLength);
@@ -160,7 +161,9 @@ function retrieveLineAndSpeedFromDb(request){
       if(jsonResponse !== null){
         var line = jsonResponse.book_line;
         var speed = jsonResponse.speed;
-        displaySpeed(speed);
+        if(request === 'initial'){
+          displaySpeed(speed);
+        }
         displayLine(line+"", speed);
       }
     }
