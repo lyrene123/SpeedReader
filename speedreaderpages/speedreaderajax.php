@@ -15,24 +15,16 @@ if(isset($_SESSION['user']) && $_SERVER['REQUEST_METHOD'] == 'POST'){
       retrieveNextLine();
     }
     sendJSONResponse(null);
-  }
-
-  if(isset($_POST['request']) && $_POST['request'] === 'next'){
+  } else if(isset($_POST['request']) && $_POST['request'] === 'next'){
     retrieveNextLine();
     while(empty($bookline)){
       retrieveNextLine();
     }
     sendJSONResponse(null);
-  }
-
-  if(isset($_POST['request']) && $_POST['request'] === 'logout'){
-    $_SESSION = array();
-    session_destroy();
-    sendJSONResponse("logout");
-  }
-
-  if(isset($_POST['selectedSpeed'])){
-    $daoManager->updateUserSpeed($user, $_POST['selectedSpeed']);
+  } else{
+    if (isset($_POST['selectedSpeed'])){
+       $daoManager->updateUserSpeed($user, $_POST['selectedSpeed']);
+    }
   }
 } else {
   header('Location: ../index.php');

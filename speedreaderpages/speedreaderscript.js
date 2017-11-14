@@ -178,19 +178,6 @@ function addEvent(obj, type, fn) {
   }
 }
 
-function logoutSession(){
-  clearInterval(g.wordLoop);
-  var req = new XMLHttpRequest();
-  req.open("POST", "speedreaderajax.php", true);
-  req.onreadystatechange = function() {
-    if (req.readyState == 4 && req.status == 200) {
-      window.location.reload(false);
-    }
-  };
-  req.setRequestHeader('Content-type','application/x-www-form-urlencoded');
-  req.send('request=logout');
-}
-
 function init(){
   g.wpmSelect = document.getElementById("wpmSelect");
   g.wordField = document.getElementById("wordField");
@@ -207,7 +194,6 @@ function init(){
   }
 
   addEvent(g.wpmSelect, "change", updateSpeed);
-  //addEvent(g.logout, "click", logoutSession);
   retrieveInitialLineAndSpeed();
 }
 
