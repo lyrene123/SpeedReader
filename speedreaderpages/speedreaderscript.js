@@ -48,18 +48,18 @@ function buildWord(word){
   }*/
 
   var focusElements = determineFocusLetter(word.length);
-  //var formattedWord = focusElements[1];
-  /*for(var i = 0; i < word.length; i++){
+  var formattedWord = focusElements[1];
+  for(var i = 0; i < word.length; i++){
     if(i == focusElements[0]){
       formattedWord += '<span class="focus">' + word.charAt(focusElements[0]) + "</span>";
     } else {
       formattedWord += word.charAt(i);
     }
-  }*/
+  }
   //formattedWord += backElements;
-  var formattedWord = focusElements[1] + word.substring(0, focusElements[0]);
-  formattedWord += '<span class="focus">' + word.charAt(focusElements[0]) + "</span>";
-  formattedWord += word.substring(focusElements[0]+1);
+//  var formattedWord = focusElements[1] + word.substring(0, focusElements[0]);
+  //formattedWord += '<span class="focus">' + word.charAt(focusElements[0]) + "</span>";
+  //formattedWord += word.substring(focusElements[0]+1);
   return formattedWord;
 }
 
