@@ -24,10 +24,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 		include 'loginpages/loginpage.php';
 	}
 } else {
-	if(isset($_GET['submit']) && $_GET['submit'] == 'Submit'){
+	if(isset($_GET['submit']) && $_GET['submit'] == 'Logout'){
 		echo "HEREEEE";
 		$_SESSION = array();
-		session_destroy();
+    session_destroy();
 	}
 
 	//if form is not submitted, display form
