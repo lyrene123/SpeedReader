@@ -7,11 +7,6 @@
 * If userid provided exists, then a login will be performed and if not, then a
 * registration will be performed.
 */
-if(isset($_GET['submit']) && $_GET['submit'] === 'submit'){
-	$_SESSION = array();
-	session_destroy();
-}
-
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	require "daoclasses/DAOManager.php";
 	$user="";
@@ -29,6 +24,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 		include 'loginpages/loginpage.php';
 	}
 } else {
+	if(isset($_GET['submit']) && $_GET['submit'] === 'Submit'){
+		$_SESSION = array();
+		session_destroy();
+	}
+
 	//if form is not submitted, display form
 	$message = "";
 	include 'loginpages/loginpage.php';
