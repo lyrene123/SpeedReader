@@ -29,7 +29,9 @@ if(isset($_SESSION['user'])){
       <div class="col-xs-3 pull-rights">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a id="logout" class="btn btn-purple">Log Out</a>
+            <form action="../index.php" method="get">
+              <input type="submit" name="submit"><a id="logout" class="btn btn-purple">Log Out</a></input>
+            </form>
           </li>
         </ul>
       </div>
@@ -56,5 +58,6 @@ if(isset($_SESSION['user'])){
     </div>
     <span>speed(wpm)</span>
   </div>
+  <p class="errorMessage" id="speedReaderError"></p>
 </body>
 </html>

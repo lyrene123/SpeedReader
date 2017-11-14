@@ -132,12 +132,10 @@ function displaySpeed(speed){
 function updateSpeed(){
   var selectedSpeed = g.wpmSelect.value;
   if(selectedSpeed.match(/^\d+$/) && g.speedArr.indexOf(selectedSpeed) !== -1){
-    if(parseInt(selectedSpeed) >= 50 && parseInt(selectedSpeed) <= 2000){
-      var req = new XMLHttpRequest();
-      req.open("POST", "speedreaderajax.php", true);
-      req.setRequestHeader('Content-type','application/x-www-form-urlencoded');
-      req.send('selectedSpeed=' + selectedSpeed);
-    }
+    var req = new XMLHttpRequest();
+    req.open("POST", "speedreaderajax.php", true);
+    req.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+    req.send('selectedSpeed=' + selectedSpeed);
   }
 }
 
@@ -163,6 +161,8 @@ function retrieveLineAndSpeedFromDb(request){
         displaySpeed(speed);
         displayLine(line+"", speed);
       }
+    } else {
+      g.speedReaderError.innerText = "Something bad happened. Problem displaying words.";
     }
   };
   req.setRequestHeader('Content-type','application/x-www-form-urlencoded');
@@ -195,6 +195,7 @@ function init(){
   g.wpmSelect = document.getElementById("wpmSelect");
   g.wordField = document.getElementById("wordField");
   g.logout = document.getElementById("logout");
+  g.speedReaderError = document.getElementById("speedReaderError");
   g.nonLetterIndexFront = 0;
   g.nonLetterIndexBack = 0;
   g.wordLoop = null;
@@ -206,7 +207,7 @@ function init(){
   }
 
   addEvent(g.wpmSelect, "change", updateSpeed);
-  addEvent(g.logout, "click", logoutSession);
+  //addEvent(g.logout, "click", logoutSession);
   retrieveInitialLineAndSpeed();
 }
 

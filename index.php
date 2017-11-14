@@ -7,6 +7,11 @@
 * If userid provided exists, then a login will be performed and if not, then a
 * registration will be performed.
 */
+if(isset($_GET['submit']) && $_GET['submit'] === 'submit'){
+	$_SESSION = array();
+	session_destroy();
+}
+
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	require "daoclasses/DAOManager.php";
 	$user="";
@@ -71,7 +76,7 @@ function handleBlockedUser(DAOManager $daoManager){
 			exit;
 		}
 	} else {
-		//if user is already in 
+		//if user is already in
 		if($daoManager->isUserStillBlocked($user)){
 			header('Location: loginpages/loginpageerror.php');
 			exit;

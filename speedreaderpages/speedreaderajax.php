@@ -14,7 +14,7 @@ if(isset($_SESSION['user']) && $_SERVER['REQUEST_METHOD'] == 'POST'){
     while(empty($bookline)){
       retrieveNextLine();
     }
-    sendJSONResponse();
+    sendJSONResponse(null);
   }
 
   if(isset($_POST['request']) && $_POST['request'] === 'next'){
@@ -22,14 +22,13 @@ if(isset($_SESSION['user']) && $_SERVER['REQUEST_METHOD'] == 'POST'){
     while(empty($bookline)){
       retrieveNextLine();
     }
-    sendJSONResponse();
+    sendJSONResponse(null);
   }
 
   if(isset($_POST['request']) && $_POST['request'] === 'logout'){
     $_SESSION = array();
     session_destroy();
-    header('Content-Type: application/json');
-    echo json_encode("logout", JSON_NUMERIC_CHECK | JSON_PRETTY_PRINT);
+    sendJSONResponse("logout");
   }
 
   if(isset($_POST['selectedSpeed'])){
@@ -40,11 +39,15 @@ if(isset($_SESSION['user']) && $_SERVER['REQUEST_METHOD'] == 'POST'){
   exit;
 }
 
-function sendJSONResponse(){
+function sendJSONResponse($data){
   global $bookline, $userRecord;
-  $lineResponse = new JSONResponse($bookline, $userRecord['speed']);
   header('Content-Type: application/json');
-  echo json_encode($lineResponse, JSON_NUMERIC_CHECK | JSON_PRETTY_PRINT);
+  if($data == null){
+    $lineResponse = new JSONResponse($bookline, $userRecord['speed']);
+    echo json_encode($lineResponse, JSON_NUMERIC_CHECK | JSON_PRETTY_PRINT);
+  } else {
+    echo json_encode($data, JSON_NUMERIC_CHECK | JSON_PRETTY_PRINT);
+  }
 }
 
 function retrieveNextLine(){
