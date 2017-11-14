@@ -1,52 +1,43 @@
+//global namespace variable g that will hold necessary global variables
 var g = {};
 
+/**
+* Determines the position of the focus letter along with the number of spaces
+* to append at the front of the word based on the word/token length.
+*
+* @return Array containing the focus letter position and the string spaces to
+*         to append at the front of the word.
+*/
 function determineFocusLetter(wordLength){
   var focusElements;
-  //var spaceCount;
   switch (true) {
     case wordLength == 1:
       focusElements = [0, "&nbsp;&nbsp;&nbsp;&nbsp;"];
-    //  spaceCount = 4;
       break;
     case wordLength >= 2 && wordLength <= 5:
       focusElements = [1, "&nbsp;&nbsp;&nbsp;"];
-      //spaceCount = 3;
       break;
     case wordLength >= 6 && wordLength <= 9:
       focusElements = [2, "&nbsp;&nbsp;"];
-      //spaceCount = 2;
       break;
     case wordLength >= 10 && wordLength <= 13:
       focusElements = [3, "&nbsp;"];
-      //spaceCount = 1;
       break;
     default:
       focusElements = [4, ""];
-      //spaceCount = 0;
   }
-
-  /*var totalSpaces = spaceCount - frontElementsLength;
-  var spaces = "";
-  for(var i = 1; i <= totalSpaces; i++){
-    spaces += "&nbsp;";
-  }
-  focusElements.push(spaces);*/
   return focusElements;
 }
 
+/**
+* Builds and formats the word to be displayed. The word will contain the
+* right amount of spaces appended at the front of the word, and the word will
+* have the focus letter in red.
+*
+* @return The formatted word containing the appended spaces and the focus letter
+*         in red.
+*/
 function buildWord(word){
-/*  var frontElements = extractNonLettersFront(word);
-  var backElements = extractNonLettersBack(word);
-  var wordElement = extractWordFromStr(word);
-
-  if(frontElements === wordElement){
-    frontElements = "";``
-  }
-
-  if(backElements === wordElement){
-    backElements = "";
-  }*/
-
   var focusElements = determineFocusLetter(word.length);
   var formattedWord = focusElements[1];
   for(var i = 0; i < word.length; i++){
@@ -56,56 +47,30 @@ function buildWord(word){
       formattedWord += word.charAt(i);
     }
   }
-  //formattedWord += backElements;
-//  var formattedWord = focusElements[1] + word.substring(0, focusElements[0]);
-  //formattedWord += '<span class="focus">' + word.charAt(focusElements[0]) + "</span>";
-  //formattedWord += word.substring(focusElements[0]+1);
   return formattedWord;
 }
 
-function extractWordFromStr(word){
-  return word.substring(g.nonLetterIndexFront, g.nonLetterIndexBack);
-}
-
-function extractNonLettersFront(word){
-  var nonLetters = "";
-  g.nonLetterIndexFront = 0;
-  for(var i = 0; i < word.length; i++){
-    if(word.charAt(i).match(/[a-zA-Z]/)){
-      break;
-    }
-    nonLetters += word.charAt(i);
-    g.nonLetterIndexFront = i + 1;
-  }
-  return nonLetters;
-}
-
-function extractNonLettersBack(word){
-  var nonLetters = "";
-  g.nonLetterIndexBack = word.length;
-  for(var i = word.length - 1; i >= 0; i--){
-    if(word.charAt(i).match(/[a-zA-Z]/)){
-      break;
-    }
-    nonLetters += word.charAt(i);
-    g.nonLetterIndexBack = i;
-  }
-  if(nonLetters.length > 0){
-    var nonLettersArr = nonLetters.split("");
-    var nonLettersArr = nonLettersArr.reverse();
-    return nonLettersArr.join("");
-  } else {
-    return nonLetters;
-  }
-}
-
-//https://codepen.io/easymac/pen/GgwEgL?editors=0010
+/**
+* Calculates the pause length based on the wpm speed selected by the user.
+* Solution taken from https://codepen.io/easymac/pen/GgwEgL?editors=0010
+*
+* @return the calculated pause length
+*/
 function calculatePauseLength(speed){
   var wordsPerSecond = Math.round(speed / 60);
   var pause = Math.round(1000 / wordsPerSecond);
   return pause;
 }
 
+/**
+* Displays a book line by displaying word by word based on the wpm speed
+* selected by the user.
+*
+* @param {String} line
+*         A book line
+* @param {String} speed
+*         Wpm speed selected by user in String format
+*/
 function displayLine(line, speed){
   var wordsArr = line.split(' ');
   var counter = 0;
@@ -120,13 +85,17 @@ function displayLine(line, speed){
   }, pauseLength);
 }
 
+/**
+*
+*/
 function displaySpeed(speed){
-  for (var i = 0; i < g.wpmSelect.options.length; i++) {
+  g.wpmSelect.options.indexOf[speed].selected = true;
+  /*for (var i = 0; i < g.wpmSelect.options.length; i++) {
     if (g.wpmSelect.options[i].text == speed) {
       g.wpmSelect.options[i].selected = true;
       return;
     }
-  }
+  }*/
 }
 
 function updateSpeed(){
@@ -140,12 +109,10 @@ function updateSpeed(){
 }
 
 function retrieveInitialLineAndSpeed(){
-  //console.log("Initial line and speed set up....");
   retrieveLineAndSpeedFromDb('initial');
 }
 
 function retrieveNextLineAndSpeed(){
-//  console.log("Retrieving next line....");
   retrieveLineAndSpeedFromDb('next');
 }
 

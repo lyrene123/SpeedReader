@@ -1,3 +1,5 @@
+<!-- The following html page is the login/registration form page that is included
+      in the index page. -->
 <!DOCTYPE html>
 <html>
 <head>
