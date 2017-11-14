@@ -25,7 +25,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	}
 } else {
 	if(isset($_GET['submit']) && $_GET['submit'] == 'Logout'){
-		echo "HEREEEE";
+		session_start();
 		$_SESSION = array();
     session_destroy();
 	}
