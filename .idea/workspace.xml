@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d52ad93c-33d5-4196-9ddb-3b19703fbc74" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LineSpeedAPI.md" afterPath="$PROJECT_DIR$/LineSpeedAPI.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/speedreaderpages/speedreaderscript.js" afterPath="$PROJECT_DIR$/speedreaderpages/speedreaderscript.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/speedreaderpages/speedreaderajax.php" afterPath="$PROJECT_DIR$/speedreaderpages/speedreaderajax.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -65,19 +66,39 @@
       <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="24" column="17" lean-forward="false" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="17" />
+            <state relative-caret-position="278">
+              <caret line="22" column="25" lean-forward="false" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LineSpeedAPI.md" pinned="false" current-in-tab="true">
+      <file leaf-file-name="speedreaderscript.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/speedreaderpages/speedreaderscript.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="speedreaderajax.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/speedreaderpages/speedreaderajax.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1717">
+              <caret line="101" column="13" lean-forward="false" selection-start-line="101" selection-start-column="13" selection-end-line="101" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LineSpeedAPI.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/LineSpeedAPI.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="255">
-                <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+              <first_editor relative-caret-position="315">
+                <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -95,6 +116,8 @@
       <list>
         <option value="$PROJECT_DIR$/UpdateSpeedAPI.md" />
         <option value="$PROJECT_DIR$/LineSpeedAPI.md" />
+        <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/speedreaderpages/speedreaderajax.php" />
       </list>
     </option>
   </component>
@@ -140,6 +163,11 @@
               <item name="reader" type="b2602c69:ProjectViewProjectNode" />
               <item name="reader" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
+            <path>
+              <item name="reader" type="b2602c69:ProjectViewProjectNode" />
+              <item name="reader" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="speedreaderpages" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -150,7 +178,7 @@
     <property name="settings.editor.selected.configurable" value="database.main" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="SearchEverywhereHistoryKey" value="settings&#9;ACTION&#9;FileOtherSettingsGroup" />
+    <property name="SearchEverywhereHistoryKey" value="inde&#9;ACTION&#9;AutoIndentLines&#10;indent&#9;ACTION&#9;AutoIndentLines&#10;settings&#9;ACTION&#9;FileOtherSettingsGroup" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -190,12 +218,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1510760204749</updated>
-      <workItem from="1510760206312" duration="1862000" />
+      <workItem from="1510760206312" duration="3849000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1862000" />
+    <option name="totallyTimeSpent" value="3849000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="873" extended-state="6" />
@@ -280,22 +308,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/LineSpeedAPI.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="315">
+            <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="17" lean-forward="false" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="17" />
+        <state relative-caret-position="278">
+          <caret line="22" column="25" lean-forward="false" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/LineSpeedAPI.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="255">
-            <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-            <folding />
-          </first_editor>
-          <second_editor />
+    <entry file="file://$PROJECT_DIR$/speedreaderpages/speedreaderscript.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/speedreaderpages/speedreaderajax.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1717">
+          <caret line="101" column="13" lean-forward="false" selection-start-line="101" selection-start-column="13" selection-end-line="101" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
