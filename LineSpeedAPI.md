@@ -4,7 +4,7 @@
 
 * **URL**
 
-  /speedreaderajax.php/:selectedSpeed
+  /speedreaderajax.php/:request
 
 * **Method:**
 
@@ -16,11 +16,14 @@
 
 * **Data Params**
 
-  selectedSpeed=[integer]
+  request=['initial' or 'next']
+  where initial refers to the request to retrieve user's current book line and speed
+  and next refers to the request to retrieve the next book line and updated speed if changed.
 
 * **Success Response:**
 
-  * None
+  * **Code:** 200 <br />
+    **Content:** `{ "book_line" : "this is a book line", "speed" : 100}`
 
 * **Error Response:**
 

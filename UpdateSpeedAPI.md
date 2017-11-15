@@ -4,7 +4,7 @@
 
 * **URL**
 
-  /speedreaderajax.php/:request
+  /speedreaderajax.php/:selectedSpeed
 
 * **Method:**
 
@@ -16,39 +16,37 @@
 
 * **Data Params**
 
-  request=['initial' or 'next']
-  where initial refers to request of user's current book line and speed
-  and next refers to the next book line and updated speed if changed.
+  selectedSpeed=[integer]
 
 * **Success Response:**
 
   * **Code:** 200 <br />
-    **Content:** `{ "book_line" : "this is a book line", "speed" : 100}`
+    **Content:** `{ "result" : "Speed Updated}` or `{ "result" : "Speed Not Updated"}`
 
 * **Error Response:**
 
   * **Code:** 4XX, 5XX or any code that is not 200 <br />
-    **Content:** `{ errorMessage : "Something bad happened. Problem displaying words." }`
+    **Content:** `{ errorMessage : "Something bad happened. Problem updating speed." }`
                   Error will be handled in the javascript side, and error message will be displayed
                   in the webpage
 
 * **Sample Call:**
 
-  `function retrieveNextLineAndSpeedFromDb(){
-    var req = new XMLHttpRequest();
-    req.open("POST", "speedreaderajax.php", true);
-    req.onreadystatechange = function() {
-      if (req.readyState == 4 && req.status == 200) {
-        var jsonResponse = JSON.parse(req.responseText);
-        if(jsonResponse !== null){
-          var line = jsonResponse.book_line;
-          var speed = jsonResponse.speed;
-          //do something with line and speed
+  `function updateSpeed(selectedSpeed){
+    if(selectedSpeed.match(/^\d+$/) && g.speedChoicesList.indexOf(selectedSpeed) !== -1){
+      var req = createHTTPRequest();
+      req.open("POST", "speedreaderajax.php", true);
+      req.onreadystatechange = function() {
+        if (req.readyState == 4 && req.status == 200) {
+          var jsonResponse = JSON.parse(req.responseText);
+          if(jsonResponse !== null){  
+            console.log(jsonResponse.result);
+          }
+        } else if (req.readyState == 4) {
+          g.speedReaderError.innerText = "Something bad happened. Problem updating speed.";
         }
-      } else if (req.readyState == 4) {
-        g.speedReaderError.innerText = "Something bad happened. Problem displaying words.";
-      }
-    };
-    req.setRequestHeader('Content-type','application/x-www-form-urlencoded');
-    req.send('request=' + request);
+      };
+      req.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+      req.send('selectedSpeed=' + selectedSpeed);
+    }
   }`
