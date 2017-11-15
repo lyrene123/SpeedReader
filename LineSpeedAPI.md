@@ -34,7 +34,7 @@
 
 * **Sample Call:**
 
-  `function retrieveNextLineAndSpeedFromDb(){
+  `function retrieveNextLineAndSpeedFromDb(){ 
     var req = new XMLHttpRequest();
     req.open("POST", "speedreaderajax.php", true);
     req.onreadystatechange = function() {

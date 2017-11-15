@@ -114,7 +114,7 @@ function updateSpeed(){
     req.onreadystatechange = function() {
       if (req.readyState == 4 && req.status == 200) {
         var jsonResponse = JSON.parse(req.responseText);
-        if(jsonResponse !== null){  
+        if(jsonResponse !== null){
           console.log(jsonResponse.result);
         }
       } else if (req.readyState == 4) {
@@ -147,7 +147,7 @@ function retrieveNextLineAndSpeed(){
 *
 * @param {String} request
 *         Type of request to be sent in the ajax message for the initial line
-          or the next line in the book.
+*         or the next line in the book.
 */
 function retrieveLineAndSpeedFromDb(request){
   var req = createHTTPRequest();

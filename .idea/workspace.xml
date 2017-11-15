@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d52ad93c-33d5-4196-9ddb-3b19703fbc74" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LineSpeedAPI.md" afterPath="$PROJECT_DIR$/LineSpeedAPI.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/speedreaderpages/speedreaderscript.js" afterPath="$PROJECT_DIR$/speedreaderpages/speedreaderscript.js" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="DAOManager.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/daoclasses/DAOManager.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="15" column="21" lean-forward="false" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
+              <folding>
+                <marker date="1510705523000" expanded="true" signature="1627:1659" ph="DROP TABLE I... " />
+                <marker date="1510705523000" expanded="true" signature="1667:1692" ph="DROP TABLE I... " />
+                <marker date="1510705523000" expanded="true" signature="1700:1739" ph="DROP TABLE I... " />
+                <marker date="1510705523000" expanded="true" signature="1747:1852" ph="CREATE TABLE... book" />
+                <marker date="1510705523000" expanded="true" signature="1860:2125" ph="CREATE TABLE... user_reader" />
+                <marker date="1510705523000" expanded="true" signature="2133:2287" ph="CREATE TABLE... blockeduser_reader" />
+                <marker date="1510705523000" expanded="true" signature="3087:3126" ph="INSERT INTO book... " />
+                <marker date="1510705523000" expanded="true" signature="3808:3850" ph="SELECT * FRO... user_reader" />
+                <marker date="1510705523000" expanded="true" signature="4616:4715" ph="INSERT INTO user_reader... " />
+                <marker date="1510705523000" expanded="true" signature="5379:5433" ph="SELECT login... user_reader" />
+                <marker date="1510705523000" expanded="true" signature="6057:6106" ph="SELECT passw... user_reader" />
+                <marker date="1510705523000" expanded="true" signature="6722:6795" ph="UPDATE user_... " />
+                <marker date="1510705523000" expanded="true" signature="7344:7401" ph="UPDATE user_... " />
+                <marker date="1510705523000" expanded="true" signature="7996:8081" ph="INSERT INTO blockeduser_reader... " />
+                <marker date="1510705523000" expanded="true" signature="8760:8809" ph="SELECT * FRO... blockeduser_reader" />
+                <marker date="1510705523000" expanded="true" signature="9567:9670" ph="SELECT * FRO... blockeduser_reader" />
+                <marker date="1510705523000" expanded="true" signature="10474:10521" ph="DELETE FROM " />
+                <marker date="1510705523000" expanded="true" signature="11105:11146" ph="SELECT book_... book" />
+                <marker date="1510705523000" expanded="true" signature="11772:11814" ph="SELECT * FRO... user_reader" />
+                <marker date="1510705523000" expanded="true" signature="12663:12716" ph="UPDATE user_... " />
+                <marker date="1510705523000" expanded="true" signature="12767:12832" ph="UPDATE user_... " />
+                <marker date="1510705523000" expanded="true" signature="13460:13509" ph="UPDATE user_... " />
+                <marker date="1510705523000" expanded="true" signature="14158:14176" ph="SELECT * FRO... book" />
+                <marker date="1510705523000" expanded="true" signature="14790:14840" ph="SELECT last_... user_reader" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UpdateSpeedAPI.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/UpdateSpeedAPI.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="360">
+                <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+                <folding />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="24" column="17" lean-forward="false" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LineSpeedAPI.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/LineSpeedAPI.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="255">
+                <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+                <folding />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/UpdateSpeedAPI.md" />
+        <option value="$PROJECT_DIR$/LineSpeedAPI.md" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="PhpServers">
+    <servers>
+      <server host="reader.app" id="16a76a56-9754-43db-ad73-ae02b190abb3" name="vagrant" use_path_mappings="true" />
+    </servers>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="Remote PHP 7.1" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="16" />
+    <option name="y" value="23" />
+    <option name="width" value="1402" />
+    <option name="height" value="834" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="reader" type="b2602c69:ProjectViewProjectNode" />
+              <item name="reader" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="settings.editor.selected.configurable" value="database.main" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="SearchEverywhereHistoryKey" value="settings&#9;ACTION&#9;FileOtherSettingsGroup" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="PHP Web Application.Vagrant">
+    <configuration name="Vagrant" type="PhpWebAppRunConfigurationType" factoryName="PHP Web Application" server_name="vagrant" />
+    <configuration name="index.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/index.php" />
+    <list size="2">
+      <item index="0" class="java.lang.String" itemvalue="PHP Web Application.Vagrant" />
+      <item index="1" class="java.lang.String" itemvalue="PHP Script.index.php" />
+    </list>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="PHP Script.index.php" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d52ad93c-33d5-4196-9ddb-3b19703fbc74" name="Default" comment="" />
+      <created>1510760204749</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1510760204749</updated>
+      <workItem from="1510760206312" duration="1862000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="1862000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="23" width="1440" height="873" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.119444445" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.06741573" sideWeight="0.50277776" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17478152" sideWeight="0.49722221" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.06741573" sideWeight="0.49722221" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
+      <option name="time" value="3" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/daoclasses/DAOManager.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="21" lean-forward="false" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
+          <folding>
+            <marker date="1510705523000" expanded="true" signature="1627:1659" ph="DROP TABLE I... " />
+            <marker date="1510705523000" expanded="true" signature="1667:1692" ph="DROP TABLE I... " />
+            <marker date="1510705523000" expanded="true" signature="1700:1739" ph="DROP TABLE I... " />
+            <marker date="1510705523000" expanded="true" signature="1747:1852" ph="CREATE TABLE... book" />
+            <marker date="1510705523000" expanded="true" signature="1860:2125" ph="CREATE TABLE... user_reader" />
+            <marker date="1510705523000" expanded="true" signature="2133:2287" ph="CREATE TABLE... blockeduser_reader" />
+            <marker date="1510705523000" expanded="true" signature="3087:3126" ph="INSERT INTO book... " />
+            <marker date="1510705523000" expanded="true" signature="3808:3850" ph="SELECT * FRO... user_reader" />
+            <marker date="1510705523000" expanded="true" signature="4616:4715" ph="INSERT INTO user_reader... " />
+            <marker date="1510705523000" expanded="true" signature="5379:5433" ph="SELECT login... user_reader" />
+            <marker date="1510705523000" expanded="true" signature="6057:6106" ph="SELECT passw... user_reader" />
+            <marker date="1510705523000" expanded="true" signature="6722:6795" ph="UPDATE user_... " />
+            <marker date="1510705523000" expanded="true" signature="7344:7401" ph="UPDATE user_... " />
+            <marker date="1510705523000" expanded="true" signature="7996:8081" ph="INSERT INTO blockeduser_reader... " />
+            <marker date="1510705523000" expanded="true" signature="8760:8809" ph="SELECT * FRO... blockeduser_reader" />
+            <marker date="1510705523000" expanded="true" signature="9567:9670" ph="SELECT * FRO... blockeduser_reader" />
+            <marker date="1510705523000" expanded="true" signature="10474:10521" ph="DELETE FROM " />
+            <marker date="1510705523000" expanded="true" signature="11105:11146" ph="SELECT book_... book" />
+            <marker date="1510705523000" expanded="true" signature="11772:11814" ph="SELECT * FRO... user_reader" />
+            <marker date="1510705523000" expanded="true" signature="12663:12716" ph="UPDATE user_... " />
+            <marker date="1510705523000" expanded="true" signature="12767:12832" ph="UPDATE user_... " />
+            <marker date="1510705523000" expanded="true" signature="13460:13509" ph="UPDATE user_... " />
+            <marker date="1510705523000" expanded="true" signature="14158:14176" ph="SELECT * FRO... book" />
+            <marker date="1510705523000" expanded="true" signature="14790:14840" ph="SELECT last_... user_reader" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UpdateSpeedAPI.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="360">
+            <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="17" lean-forward="false" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LineSpeedAPI.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="255">
+            <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
