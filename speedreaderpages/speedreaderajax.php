@@ -34,7 +34,13 @@ if(isset($_SESSION['user']) && $_SERVER['REQUEST_METHOD'] == 'POST'){
   } else{
     //if requesting to update the user speed with a new speed
     if (isset($_POST['selectedSpeed'])){
-       $daoManager->updateUserSpeed($user, $_POST['selectedSpeed']);
+        $result = [];
+       if($daoManager->updateUserSpeed($user, $_POST['selectedSpeed'])){
+         $result = ["result" => "Speed updated"];
+       } else {
+         $result = ["result" => "Speed not updated"];
+       }
+       sendJSONResponse($result);
     }
   }
 } else {

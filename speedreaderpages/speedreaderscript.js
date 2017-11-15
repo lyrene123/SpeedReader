@@ -109,8 +109,18 @@ function updateSpeed(){
   var selectedSpeed = g.wpmSelect.value;
   //validates first if the selected speed is a number between 50 - 20000
   if(selectedSpeed.match(/^\d+$/) && g.speedArr.indexOf(selectedSpeed) !== -1){
-    var req = new XMLHttpRequest();
+    var req = createHTTPRequest();
     req.open("POST", "speedreaderajax.php", true);
+    req.onreadystatechange = function() {
+      if (req.readyState == 4 && req.status == 200) {
+        var jsonResponse = JSON.parse(req.responseText);
+        if(jsonResponse !== null){  
+          console.log(jsonResponse.result);
+        }
+      } else if (req.readyState == 4) {
+        g.speedReaderError.innerText = "Something bad happened. Problem updating speed.";
+      }
+    };
     req.setRequestHeader('Content-type','application/x-www-form-urlencoded');
     req.send('selectedSpeed=' + selectedSpeed);
   }
@@ -140,7 +150,7 @@ function retrieveNextLineAndSpeed(){
           or the next line in the book.
 */
 function retrieveLineAndSpeedFromDb(request){
-  var req = new XMLHttpRequest();
+  var req = createHTTPRequest();
   req.open("POST", "speedreaderajax.php", true);
   req.onreadystatechange = function() {
     if (req.readyState == 4 && req.status == 200) {
@@ -157,6 +167,17 @@ function retrieveLineAndSpeedFromDb(request){
   };
   req.setRequestHeader('Content-type','application/x-www-form-urlencoded');
   req.send('request=' + request);
+}
+
+/**
+* Returns a browser compatible XMLHttp request object
+*/
+function createHTTPRequest(){
+  if (window.XMLHttpRequest){
+    return new XMLHttpRequest();
+  } else {
+    return new ActiveXObject("Microsoft.XMLHTTP");
+  }
 }
 
 /**

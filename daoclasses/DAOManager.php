@@ -421,6 +421,7 @@ class DAOManager
   *
   * @param userid - username
   * @param speed - a wpm speed selection
+  * @return boolean if record was updated
   */
   function updateUserSpeed($userid, $speed){
     try{
@@ -429,9 +430,13 @@ class DAOManager
       $query = $pdo->prepare("UPDATE user_reader SET speed = ? WHERE userid = ?");
       $query->bindValue(1, $speed);
       $query->bindValue(2, $userid);
-      $result = $query->execute();
+      if($query->execute()){
+        return true;
+      } else {
+        return false;
+      }
     } catch (PDOException $e){
-      echo $e->getMessage();
+      return false;
     } finally {
       unset($pdo);
     }
