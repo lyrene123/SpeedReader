@@ -13,3 +13,5 @@ The goal of a speed reader is to develop good reading skills.
 
 This web application is written in PHP (backend) and JavaScript (frontend).
 Source of the text from http://www.textfiles.com/etext based on Project Gutenberg
+<br><br>
+Heroku URL: https://lyrenereader.herokuapp.com/
